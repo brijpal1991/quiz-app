@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Simple Quiz</h1>
+
+  <div *ngIf="!quizCompleted">
+    <p><strong>Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}:</strong></p>
+    <p>{{ questions[currentQuestionIndex].question }}</p>
+
+    <div class="options">
+      <button *ngFor="let option of questions[currentQuestionIndex].options"
+              (click)="selectAnswer(option)">
+        {{ option }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="quizCompleted">
+    <h2>Quiz Completed!</h2>
+    <p>Your Score: {{ score }} / {{ questions.length }}</p>
+    <button (click)="restartQuiz()">Restart Quiz</button>
+  </div>
+</div>
